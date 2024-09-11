@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Bruno Pedroso Dev.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Botão de alternância de tema -->
+    <div class="toggle-button" id="theme-toggle">
+        <span class="icon moon">&#9790;</span> <!-- Ícone de lua -->
+        <span class="icon sun">&#9788;</span> <!-- Ícone de sol -->
+    </div>
+
+    <header>
+        <!-- Botão de Menu -->
+        <button class="menu-button" id="menu-button">
+            <img src="image/botaomenu.com.png" alt="Menu">
+        </button>
+
+        <!-- Barra de Navegação que surgirá no topo -->
+        <nav class="top-nav" id="top-nav">
+            <ul>
+                <li><a href="#about" onclick="scrollToSection('about');">Sobre Mim</a></li>
+                <li><a href="#skills" onclick="scrollToSection('skills');">Habilidades</a></li>
+                <li><a href="#projects" onclick="scrollToSection('projects');">Meus Projetos</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact');">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção Inicial -->
+        <section class="hero">
+            <div class="container">
+                <img src="image/my-photo3.png" alt="Foto do Perfil" class="profile-pic">
+                <div class="name">Bruno Pedroso</div>
+                <div class="typewriter" id="typewriter-text"></div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="about" class="about">
+            <h2>Sobre Mim</h2>
+            <p>Sou apaixonado por tecnologia e iniciei minha jornada profissional na área de suporte técnico, onde
+                adquiri uma base sólida em resolução de problemas e atendimento ao usuário. Agora, estou me aproximando
+                da programação, explorando novas oportunidades e me desafiando a aprender e criar soluções inovadoras no
+                mundo do desenvolvimento de software e web. Essa transição reflete minha constante busca por crescimento
+                e adaptação às mudanças tecnológicas.</p>
+        </section>
+
+        <!-- Seção de Habilidades -->
+        <section id="skills" class="skills">
+            <h2>Habilidades</h2>
+            <ul>
+                <li>
+                    <img src="assets/html5.png" alt="HTML">
+                    HTML5
+                </li>
+                <li>
+                    <img src="assets/css3.png" alt="CSS">
+                    CSS3
+                </li>
+                <li>
+                    <img src="assets/python.png" alt="Python">
+                    Python
+                </li>
+            </ul>
+        </section>
+
+        <!-- Seção de Projetos -->
+        <section id="projects" class="projects">
+            <h2>Meus Projetos</h2>
+
+            <style>
+                /* CSS style to make the link appear in white color */
+                .project-item a {
+                    color: white;
+                }
+            </style>
+
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>FitMotors Concessionária</h3>
+                    Criei esse Projeto utilizando HTML, CSS, JavaScript e I.A<br>
+                    Site para acesso: <a
+                        href="https://pedrosotech.github.io/FitMotors/">https://pedrosotech.github.io/FitMotors/</a>
+                    <img src="image/FitMotors.png" alt="FitMotors">
+
+                    <h3>Calculadora de Indice de Massa Corporal</h3>
+                Criei esse Projeto utilizando HTML, CSS e JavaScript<br>
+                Site para acesso: <a
+                    href="https://pedrosotech.github.io/Calculo-de-IMC/">https://pedrosotech.github.io/Calculo-de-IMC/</a>
+                <img src="image/calculo-de-imc.png" alt="FitMotors">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" class="contact">
+            <h2>Contato</h2>
+            <p>Email: brn.pedrosoinformatica@gmail.com</p>
+            <p>Telefone: (11) 97086-6917</p>
+            <a href="documents/ainda em desenvolvimento.txt" class="btn" download>Baixar Currículo</a>
+        </section>
+    </main>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <img src="image/seta-paracima.png" alt="Voltar ao Topo">
+    </button>
+
+    <!-- Seção de Direitos Reservados -->
+    <footer class="footer">
+        <p>Todos os direitos reservados &copy; 2024 - Design por Bruno Pedroso</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.getElementById('menu-button');
+            const topNav = document.getElementById('top-nav');
+
+            menuButton.addEventListener('click', function () {
+                topNav.classList.toggle('active');
+            });
+        });
+
+        let lastScrollTop = 0; // Variável para armazenar a posição do scroll anterior
+
+        // Função para rolar para uma seção específica
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função para rolar para o topo da página
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mostrar/ocultar botão "Voltar ao Topo"
+        window.onscroll = function () {
+            const btn = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+            revealOnScroll();
+            fadeOutOnScroll();
+        };
+
+        // Função para exibir os elementos ao rolar a página para baixo
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.classList.contains('footer')) return; // Ignorar o rodapé
+                const sectionTop = section.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight - 150; // Ajustado para todas as seções
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('show');
+                    section.classList.remove('fade-out');
+                    // Adiciona transição lateral apenas para a seção MEUS PROJETOS
+                    if (section.id === 'projects') {
+                        section.classList.add('slide-in');
+                    } else {
+                        section.classList.remove('slide-in');
+                    }
+                }
+            });
+        }
+
+        // Função para ocultar os elementos ao rolar a página para cima (incluindo "MEUS PROJETOS")
+        function fadeOutOnScroll() {
+            const sections = document.querySelectorAll('section');
+            const currentScroll = window.scrollY; // Posição atual do scroll
+            sections.forEach(section => {
+                if (section.classList.contains('footer')) return; // Ignorar o rodapé
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const triggerPoint = window.innerHeight; // Ajustado para desaparecer mais tarde
+                // Efeito de sumir na seção MEUS PROJETOS somente ao subir
+                if (section.id === 'projects' && currentScroll < lastScrollTop && sectionBottom < triggerPoint + 50) {
+                    section.classList.add('fade-out');
+                    section.classList.remove('show');
+                } else if (section.id === 'projects' && currentScroll > lastScrollTop) {
+                    section.classList.remove('fade-out');
+                }
+                // Seções "Sobre Mim" e "Contato" não terão o efeito de sumir
+                if (section.id !== 'contact' && section.id !== 'about' && sectionBottom < triggerPoint + 100 && sectionTop > 150) {
+                    section.classList.add('fade-out');
+                    section.classList.remove('show');
+                }
+            });
+            lastScrollTop = currentScroll; // Atualiza a posição do scroll anterior
+        }
+
+        // Alternância de tema escuro/claro
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', function () {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+
+</html>

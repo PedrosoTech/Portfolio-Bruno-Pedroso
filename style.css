@@ -1,0 +1,408 @@
+/* Estilos do corpo */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #4B0082; /* Fundo roxo claro */
+    color: #FFFFFF; /* Texto branco */
+}
+
+.dark-mode {
+    background-color: #2e004f;
+    color: #fff;
+}
+
+/* Estilos para o botão de alternância de tema */
+.toggle-button {
+    position: fixed;
+    top: 10px;
+    right: 13px;
+    width: 20px;
+    height: 10px;
+    background-color: #4c008200; /* Cor de fundo para destacar */
+    border: 2px solid #ffffff00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 0; /* Certifique-se de que está acima de outros elementos 1001 = ativo, 0 = desativado */
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+    background-color: #6900e200; /* Mudança de cor ao passar o mouse */
+}
+
+.icon {
+    font-size: 20px;
+    color: #fff; /* Cor do ícone */
+}
+
+/* Mostra apenas o ícone correspondente ao modo atual */
+.sun {
+    display: none;
+}
+
+.dark-mode .moon {
+    display: none;
+}
+
+.dark-mode .sun {
+    display: inline-block;
+}
+
+/* Barra de navegação no topo (inicialmente escondida) */
+:root {
+    --nav-bar-height: 20px; /* Altura padrão da barra de navegação */
+}
+
+.top-nav {
+    position: fixed;
+    top: -100px; /* Escondido acima da tela */
+    left: 0;
+    width: 100%;
+    height: var(--nav-bar-height); /* Usando a variável para definir a altura */
+    background-color: #4B0082;
+    color: white;
+    z-index: 1000;
+    padding: 10px 0;
+    text-align: center;
+    transition: top 0.5s ease-in-out; /* Animação suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+}
+
+/* Estilo dos links na barra de navegação */
+.top-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.top-nav ul li {
+    margin: 0 15px;
+}
+
+.top-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Estado ativo da barra de navegação */
+.top-nav.active {
+    top: 0; /* Faz com que a barra deslize para baixo na tela */
+}
+
+/* Botão de menu */
+.menu-button {
+    position: fixed;
+    top: 0px;
+    left: 7px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.menu-button img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Estilos adicionais */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('theme/theme-purple-and-white.gif') no-repeat center center;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000080; /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    object-fit: cover;
+    box-shadow: 0 0 10px #00000033;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.name {
+    font-size: 3em;
+    font-weight: 700;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px #00000066;
+    z-index: 1;
+}
+
+/* Seções de conteúdo */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section.fade-out {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-in, transform 1s ease-in;
+}
+
+.section {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: #FFFFFF;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+section p, section ul, section .project-list {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills ul li {
+    background: #44007500;
+    border: 2px solid #ffffff00;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.skills ul li img {
+    display: block;
+    margin: 0 auto 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.projects .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projects .project-item {
+    margin: 10px;
+    text-align: center;
+}
+
+.projects img, .projects video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #0000004d;
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.back-to-top img {
+    width: 40px;
+    height: 40px;
+}
+
+.back-to-top:hover {
+    background-color: #6900e200;
+}
+
+/* Botão para download do currículo */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    color: #4B0082;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #DDDDDD;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    .name {
+        font-size: 2em;
+    }
+    section {
+        padding: 40px 15px;
+    }
+
+    .toggle-button {
+        width: 30px;
+        height: 30px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .icon {
+        font-size: 16px;
+    }
+}
+
+/* Estilos do rodapé */
+.footer {
+    background-color: #4B0082;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px 0;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 10px #00000033;
+    clear: both;
+    border-top: 2px solid #FFFFFF;
+    margin-top: auto;
+}
+
+/* Estilo da máquina de escrever */
+.typewriter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #ffffff;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #ffffff; }
+}
+
+/* Adiciona um GIF de fundo a todas as seções, exceto a inicial */
+.background-gif {
+    position: relative;
+    background-image: url('theme/contrario-theme-purple-and-white1.gif'); /* Substitua pelo caminho do seu GIF */
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-position: center;
+    z-index: 1; /* Certifique-se de que o z-index seja menor que o da seção inicial */
+}
+
+/* Certifique-se de que o conteúdo das seções esteja acima do GIF */
+.background-gif h2, .background-gif p {
+    position: relative;
+    z-index: 2;
+}
+
+/* Adiciona um fundo branco à seção inicial para garantir que o GIF não sobreponha */
+.hero {
+    background-color: #ffffff00;
+    z-index: 3;
+    position: relative;
+}
