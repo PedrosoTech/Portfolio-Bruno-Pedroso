@@ -69,7 +69,6 @@ function revealOnScroll() {
 // Adicionar evento de carregamento da janela para garantir que todas as funções sejam chamadas após o carregamento completo da página
 window.addEventListener('load', function () {
     revealOnScroll();
-    fadeOutOnScroll();
 });
 
 // Evento de clique para alternar a barra de navegação
