@@ -52,7 +52,7 @@ function revealOnScroll() {
     sections.forEach(section => {
         if (section.classList.contains('footer')) return; // Ignorar o rodapé
         const sectionTop = section.getBoundingClientRect().top;
-        const triggerPoint = window.innerHeight - 150; // Ajustado para todas as seções
+        const triggerPoint = window.innerHeight - 320; // Ajustado para todas as seções
         if (sectionTop < triggerPoint) {
             section.classList.add('show');
             section.classList.remove('fade-out');
