@@ -181,18 +181,6 @@
             });
         }
 
-        // Função para ocultar os elementos ao rolar a página para cima (incluindo "MEUS PROJETOS")
-        function fadeOutOnScroll() {
-            const sections = document.querySelectorAll('section');
-            const currentScroll = window.scrollY; // Posição atual do scroll
-            sections.forEach(section => {
-                if (section.classList.contains('footer')) return; // Ignorar o rodapé
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
-                const triggerPoint = window.innerHeight; // Ajustado para desaparecer mais tarde
-                // Efeito de sumir na seção MEUS PROJETOS somente ao subir
-        }
-
         // Alternância de tema escuro/claro
         const toggleButton = document.getElementById('theme-toggle');
         const body = document.body;
