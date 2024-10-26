@@ -127,68 +127,8 @@
         <p>Todos os direitos reservados &copy; 2024 - Design por Bruno Pedroso</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuButton = document.getElementById('menu-button');
-            const topNav = document.getElementById('top-nav');
-
-            menuButton.addEventListener('click', function () {
-                topNav.classList.toggle('active');
-            });
-        });
-
-        // Função para rolar para uma seção específica
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Função para rolar para o topo da página
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Mostrar/ocultar botão "Voltar ao Topo"
-        window.onscroll = function () {
-            const btn = document.querySelector('.back-to-top');
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
-            revealOnScroll();
-            fadeOutOnScroll();
-        };
-
-        // Função para exibir os elementos ao rolar a página para baixo
-        function revealOnScroll() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                if (section.classList.contains('footer')) return; // Ignorar o rodapé
-                const sectionTop = section.getBoundingClientRect().top;
-                const triggerPoint = window.innerHeight - 150; // Ajustado para todas as seções
-                if (sectionTop < triggerPoint) {
-                    section.classList.add('show');
-                    section.classList.remove('fade-out');
-                    // Adiciona transição lateral apenas para a seção MEUS PROJETOS
-                    if (section.id === 'projects') {
-                        section.classList.add('slide-in');
-                    } else {
-                        section.classList.remove('slide-in');
-                    }
-                }
-            });
-        }
-
-        // Alternância de tema escuro/claro
-        const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        toggleButton.addEventListener('click', function () {
-            body.classList.toggle('dark-mode');
-        });
-    </script>
+    <script src="script.js"></script
+    
 </body>
 
 </html>
