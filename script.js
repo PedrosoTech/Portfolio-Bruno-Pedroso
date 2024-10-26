@@ -66,31 +66,6 @@ function revealOnScroll() {
     });
 }
 
-// Função para ocultar os elementos ao rolar a página para cima (incluindo "MEUS PROJETOS")
-function fadeOutOnScroll() {
-    const sections = document.querySelectorAll('section');
-    const currentScroll = window.scrollY; // Posição atual do scroll
-    sections.forEach(section => {
-        if (section.classList.contains('footer')) return; // Ignorar o rodapé
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionBottom = section.getBoundingClientRect().bottom;
-        const triggerPoint = window.innerHeight; // Ajustado para desaparecer mais tarde
-        // Efeito de sumir na seção MEUS PROJETOS somente ao subir
-        if (section.id === 'projects' && currentScroll < lastScrollTop && sectionBottom < triggerPoint + 50) {
-            section.classList.add('fade-out');
-            section.classList.remove('show');
-        } else if (section.id === 'projects' && currentScroll > lastScrollTop) {
-            section.classList.remove('fade-out');
-        }
-        // Seções "Sobre Mim" e "Contato" não terão o efeito de sumir
-        if (section.id !== 'contact' && section.id !== 'about' && sectionBottom < triggerPoint + 100 && sectionTop > 150) {
-            section.classList.add('fade-out');
-            section.classList.remove('show');
-        }
-    });
-    lastScrollTop = currentScroll; // Atualiza a posição do scroll anterior
-}
-
 // Adicionar evento de carregamento da janela para garantir que todas as funções sejam chamadas após o carregamento completo da página
 window.addEventListener('load', function () {
     revealOnScroll();
