@@ -268,21 +268,88 @@ section p, section ul, section .project-list {
 }
 
 .projects .project-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Alterado para 2 colunas fixas */
+    gap: 2rem;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .projects .project-item {
-    margin: 10px;
-    text-align: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.projects img, .projects video {
-    max-width: 100%;
+.projects .project-item img {
+    width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #0000004d;
+    display: block;
+}
+
+.projects .project-item .project-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(75, 0, 130, 0.8);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alterado para começar do topo */
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding-bottom: 60px; /* Espaço para o botão */
+}
+
+.projects .project-item:hover .project-content {
+    opacity: 1;
+}
+
+.projects .project-item h3 {
+    margin-top: 20px; /* Espaço no topo */
+    margin-bottom: 15px;
+    font-size: 1.2em; /* Reduzido o tamanho da fonte */
+    color: #fff;
+    padding: 0 10px; /* Espaço lateral */
+}
+
+.projects .project-item p {
+    font-size: 0.85em; /* Reduzido o tamanho da fonte */
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; /* Espaço lateral */
+    line-height: 1.4; /* Melhor espaçamento entre linhas */
+}
+
+.projects .project-item a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 20px;
+    background: #fff;
+    color: #4B0082;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.projects .project-item a:hover {
+    background: #DDDDDD;
+}
+
+@media (max-width: 768px) {
+    .projects .project-list {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
 }
 
 /* Botão Voltar ao Topo */
